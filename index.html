@@ -60,7 +60,7 @@
 
     header {
       background-color: var(--light-text-color);
-      padding: 15px 0;
+      padding: 10px 0; /* Ajustado levemente para a logo */
       box-shadow: var(--box-shadow);
       position: sticky;
       top: 0;
@@ -74,10 +74,16 @@
     }
 
     .logo {
-      font-size: 2.2em;
-      font-weight: bold;
-      color: var(--primary-color);
+      display: flex;
+      align-items: center;
       text-decoration: none;
+    }
+
+    /* Estilo para a imagem da logo no cabeçalho */
+    .logo img {
+      height: 60px; /* Altura ajustada para a barra */
+      width: auto;
+      object-fit: contain;
     }
 
     .hamburger-menu {
@@ -448,7 +454,7 @@
       nav {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 80px; /* Ajustado para a altura da nova logo */
         left: 0;
         width: 100%;
         background-color: var(--light-text-color);
@@ -487,8 +493,8 @@
     }
 
     @media (max-width: 768px) {
-      .logo {
-        font-size: 1.7em;
+      .logo img {
+        height: 45px; /* Logo levemente menor no mobile */
       }
       .hero h1 {
         font-size: 2.8em;
@@ -511,7 +517,10 @@
 <body>
   <header>
     <div class="container">
-      <a href="#hero" class="logo">Custódia Cultural</a>
+      <a href="#hero" class="logo">
+        <img src="https://raw.githubusercontent.com/iadesignerweb/custodiaculturalpmc/refs/heads/main/file_000000007d7071f59a6b7327d035fb22.png" alt="Custódia Cultural">
+      </a>
+      
       <div class="hamburger-menu" id="hamburger-menu">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -539,13 +548,12 @@
     <section id="sobre">
       <div class="container content-box">
         <div class="image-content">
-          <!-- Aqui pode entrar a sua logo ou uma imagem cultural -->
-          <!-- Exemplo: <img src="logo-custodia-cultural.png" alt="Logo Custódia Cultural"> -->
+          <img src="https://raw.githubusercontent.com/iadesignerweb/custodiaculturalpmc/refs/heads/main/file_000000007d7071f59a6b7327d035fb22.png" alt="Logo Custódia Cultural" style="max-width: 250px;">
         </div>
         <div class="text-content">
           <h2>Sobre a Custódia Cultural</h2>
-          <p>A Custódia Cultural é o canal oficial do Departamento de Cultura da Prefeitura Municipal de Custódia (PE), conectado com a nossa comunidade artística e patrimonial. Por meio do Instagram @custodiacultural, compartilhamos eventos, memórias, patrimônios e ações culturais que valorizam nossa identidade local.</p>
-          <p>Nosso objetivo é promover a cultura de Custódia, apoiar artistas locais e preservar nosso patrimônio histórico e imaterial.</p>
+          <p>A Custódia Cultural é o canal oficial do Departamento de Cultura do Municipal de Custódia (PE), conectado com a nossa comunidade artística e patrimonial. Por meio do Instagram @custodiacultural, compartilhamos eventos, memórias, patrimônios e ações culturais que valorizam nossa identidade local.</p>
+          <p>Nosso objetivo é promover a cultura de Custódia, apoiar artistas locais, ligando-os ao Pontão Culturais de Serra Talhada-PE (Pontão Cultural Cabras de Lampião).</p>
           <a href="#contato" class="btn">Saiba Mais</a>
         </div>
       </div>
@@ -591,7 +599,6 @@
           <a href="#contato" class="btn">Fale com a gente</a>
         </div>
         <div class="image-content">
-          <!-- imagem representativa da comunidade cultural -->
           <img src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="Comunidade cultural"/>
         </div>
       </div>
