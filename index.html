@@ -403,11 +403,12 @@
 
   // Formulário
   const form = document.getElementById('artist-form');
+  const DESTINATION_EMAIL = 'custoriadepcultural@gmail.com'; // E-MAIL CORRIGIDO AQUI
 
   form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio padrão
+    event.preventDefault(); // Impede o envio padrão do formulário
 
-    // 1. Coleta os dados do formulário
+    // 1. Coleta dos dados
     const nomeArtistico = document.getElementById('nome-artistico').value;
     const email = document.getElementById('email').value;
     const celular = document.getElementById('celular').value;
@@ -415,35 +416,43 @@
     const numero = document.getElementById('numero').value;
     const bairro = document.getElementById('bairro').value;
     const historico = document.getElementById('historico').value;
-    const areaArtistica = document.getElementById('area-artistica').options[document.getElementById('area-artistica').selectedIndex].text;
+    // Pega o texto da opção selecionada para o corpo do email
+    const areaArtisticaText = document.getElementById('area-artistica').options[document.getElementById('area-artistica').selectedIndex].text;
 
-    // 2. Monta o corpo do email
-    const subject = encodeURIComponent(`CADASTRO ARTISTA: ${nomeArtistico}`);
-    const body = encodeURIComponent(
-      `Nome Artístico: ${nomeArtistico}\n` +
-      `Área Artística: ${areaArtistica}\n` +
-      `Email: ${email}\n` +
-      `Celular: ${celular}\n` +
-      `Endereço: ${endereco}\n` +
-      `Número: ${numero}\n` +
-      `Bairro: ${bairro}\n\n` +
-      `Histórico Artístico:\n${historico}\n\n` +
-      `--- FIM DO CADASTRO ---`
-    );
+    // Usamos "%0A" para quebrar linhas no corpo do e-mail.
+    // Usamos "%20" para espaços (embora encodeURIComponent faça isso).
+    const newLine = "%0A";
+    const separator = "----------------------------------";
 
-    // 3. Cria o link 'mailto'
-    // OBS: O método mailto não envia o formulário diretamente; ele apenas abre o cliente de email do usuário
-    // com os campos preenchidos, permitindo que o usuário clique em 'enviar'.
-    const mailtoLink = `mailto:custodiadepcultura@mail.com?subject=${subject}&body=${body}`;
+    // 2. Monta o corpo do email com quebras de linha formatadas
+    const bodyText = 
+      `INFORMAÇÕES DO ARTISTA/GRUPO${newLine}` +
+      `${separator}${newLine}` +
+      `Nome Artístico: ${nomeArtistico}${newLine}` +
+      `Área Artística: ${areaArtisticaText}${newLine}` +
+      `Email: ${email}${newLine}` +
+      `Celular: ${celular}${newLine}` +
+      `Endereço: ${endereco}, Nº ${numero}, Bairro: ${bairro}${newLine}${newLine}` +
+      `HISTÓRICO ARTÍSTICO:${newLine}` +
+      `${historico}${newLine}${newLine}` +
+      `${separator}${newLine}` +
+      `ENVIADO AUTOMATICAMENTE VIA SITE CUSTÓDIA CULTURAL`;
 
-    // 4. Abre o cliente de email
+    // 3. Codifica (URL-encode) o assunto e o corpo para funcionar no link mailto:
+    const subject = encodeURIComponent(`CADASTRO ARTISTA (SITE): ${nomeArtistico}`);
+    const body = encodeURIComponent(bodyText);
+
+    // 4. Cria o link 'mailto'
+    const mailtoLink = `mailto:${DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
+
+    // 5. Abre o cliente de email do usuário
     window.location.href = mailtoLink;
 
-    // 5. Exibe o popup de sucesso
+    // 6. Exibe o popup de sucesso com o endereço de e-mail atualizado
     setTimeout(() => {
-        alert("🎉 Seu cadastro foi realizado com sucesso. Em breve retornamos! Secretaria de Educação - Departamento de Cultura - PMC");
-        form.reset(); // Limpa o formulário após a exibição do popup (se o usuário realmente enviou o e-mail)
-    }, 1000); // Pequeno delay para garantir que a ação mailto foi iniciada
+        alert(`🎉 Seu cadastro foi enviado! Lembre-se: você precisa confirmar o envio na janela do seu programa de e-mail.${newLine}${newLine}Em breve retornamos! Secretaria de Educação - Departamento de Cultura - PMC`);
+        form.reset(); // Limpa o formulário
+    }, 500); // Pequeno delay
   });
 </script>
 
