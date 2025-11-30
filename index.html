@@ -5,19 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custódia Cultural – Departamento de Cultura</title>
 
-  <meta name="description" content="Portal oficial do Departamento de Cultura de Custódia/PE. Conheça artistas, eventos, projetos culturais e participe do fortalecimento da cultura regional." />
-  <meta name="keywords" content="Custódia Cultural, Cultura Custódia, Prefeitura Custódia, Patrimônio Cultural, Eventos Culturais, Departamento de Cultura Custódia" />
+  <meta name="description" content="Portal oficial do Departamento de Cultura de Custódia/PE. Conheça artistas, eventos e projetos culturais." />
+  <meta name="keywords" content="Custódia Cultural, Cultura Custódia, Prefeitura Custódia, Patrimônio Cultural" />
   <meta name="author" content="Plinio Studio" />
+  
   <meta property="og:title" content="Custódia Cultural – Departamento de Cultura" />
   <meta property="og:description" content="Conecte-se com a cultura de Custódia: patrimônio, arte local, eventos e comunidade." />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Custódia Cultural – Departamento de Cultura" />
-  <meta name="twitter:description" content="Conecte-se com a cultura de Custódia: patrimônio, arte local, eventos e comunidade." />
-
 
   <style>
-    /* =================== ROOT =================== */
+    /* =================== ROOT & VARIÁVEIS =================== */
     :root {
       --primary-color: #082A9D;
       --primary-light: #4A90E2;
@@ -57,9 +54,10 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0 20px; /* Ajuste para não colar nas bordas no mobile */
     }
 
+    /* =================== HEADER =================== */
     header {
       background-color: var(--light-text-color);
       padding: 15px 0;
@@ -76,16 +74,21 @@
     }
 
     .logo {
-      font-size: 2.2em;
+      font-size: 1.8em; /* Levemente ajustado para mobile */
       font-weight: bold;
       color: var(--primary-color);
       text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+        .logo { font-size: 2.2em; }
     }
 
     .hamburger-menu {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      z-index: 1001;
     }
 
     .hamburger-menu .bar {
@@ -94,10 +97,6 @@
       background-color: var(--primary-color);
       margin: 5px 0;
       transition: var(--transition-speed);
-    }
-
-    nav {
-      display: flex;
     }
 
     nav ul {
@@ -133,23 +132,28 @@
       color: var(--primary-color);
     }
 
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
+    nav ul li a:hover::after {
       width: 100%;
     }
 
+    /* =================== HERO SECTION =================== */
     section {
-      padding: 80px 0;
+      padding: 60px 0;
       border-bottom: 1px solid var(--border-color);
+    }
+    
+    @media (min-width: 768px) {
+        section { padding: 80px 0; }
     }
 
     .hero {
-      background: linear-gradient(rgba(8, 42, 157, 0.9), rgba(8, 42, 157, 0.8)),
-        url('http://youtube.com/post/UgkxGskBqnBV5FOK_US-6jnwUv2PhX8JjeRf?si=-bpLlbAFD3D1rINT')
+      /* CORREÇÃO: Substituído o link do Youtube por uma imagem real ou placeholder */
+      background: linear-gradient(rgba(8, 42, 157, 0.9), rgba(8, 42, 157, 0.7)),
+        url('https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?q=80&w=1974&auto=format&fit=crop')
         no-repeat center center/cover;
       color: var(--light-text-color);
       text-align: center;
-      padding: 120px 20px;
+      padding: 100px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -157,21 +161,26 @@
     }
 
     .hero h1 {
-      font-size: 3.5em;
+      font-size: 2.5em;
       margin-bottom: 20px;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
       line-height: 1.2;
       max-width: 900px;
       font-weight: 700;
     }
+    
+    @media (min-width: 768px) {
+        .hero h1 { font-size: 3.5em; }
+    }
 
     .hero p {
-      font-size: 1.4em;
+      font-size: 1.2em;
       margin-bottom: 40px;
       max-width: 800px;
       opacity: 0.95;
     }
 
+    /* =================== BOTÕES =================== */
     .btn {
       display: inline-block;
       background-color: var(--secondary-color);
@@ -180,8 +189,7 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color var(--transition-speed),
-        transform var(--transition-speed), box-shadow var(--transition-speed);
+      transition: all var(--transition-speed);
       border: none;
       cursor: pointer;
       font-size: 1.1em;
@@ -191,18 +199,20 @@
     .btn:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0, 205, 10, 0.4);
+      background-color: #00b309; /* Leve escurecimento no hover */
     }
 
     .btn-nav {
-      padding: 12px 25px;
+      padding: 10px 25px;
       font-size: 1em;
     }
 
+    /* =================== TÍTULOS E CARDS =================== */
     h2 {
-      font-size: 3em;
+      font-size: 2.2em;
       color: var(--primary-color);
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       position: relative;
       font-weight: 700;
     }
@@ -223,7 +233,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      margin-top: 40px;
     }
 
     .vantagem-card {
@@ -232,8 +241,7 @@
       border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
       text-align: center;
-      transition: transform var(--transition-speed),
-        box-shadow var(--transition-speed);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
       border: 1px solid var(--border-color);
     }
 
@@ -250,16 +258,25 @@
     }
 
     .vantagem-card h3 {
-      font-size: 1.6em;
+      font-size: 1.4em;
       color: var(--primary-color);
       margin-bottom: 15px;
       font-weight: 600;
     }
 
+    /* =================== CONTENT BOX (SOBRE/QUEM SOMOS) =================== */
     .content-box {
       display: flex;
+      flex-direction: column; /* Padrão Mobile */
       align-items: center;
-      gap: 50px;
+      gap: 40px;
+    }
+    
+    @media (min-width: 992px) {
+        .content-box {
+            flex-direction: row;
+            gap: 50px;
+        }
     }
 
     .content-box .text-content {
@@ -269,32 +286,33 @@
     .content-box .image-content {
       flex: 1;
       text-align: center;
+      width: 100%;
     }
 
     .content-box .image-content img {
       max-width: 100%;
+      height: auto;
       border-radius: var(--border-radius);
-    }
-
-    .content-box h3 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      color: var(--primary-color);
+      box-shadow: var(--box-shadow);
+      object-fit: cover;
     }
 
     #para-quem-e ul {
       list-style: none;
       padding-left: 0;
+      margin-bottom: 30px;
     }
 
     #para-quem-e ul li {
+      /* Ícone SVG inline no CSS */
       background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300CD0A"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') no-repeat left center;
       background-size: 24px;
       padding-left: 35px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       margin-bottom: 15px;
     }
 
+    /* =================== PROVA SOCIAL & DEPOIMENTOS =================== */
     .social-proof {
       background-color: var(--primary-color);
       color: var(--light-text-color);
@@ -302,17 +320,9 @@
       padding: 60px 20px;
     }
 
-    .social-proof h2 {
-      color: var(--light-text-color);
-      font-size: 2.5em;
-      margin: 0;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
     .depoimentos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Melhor responsividade */
       gap: 30px;
     }
 
@@ -331,17 +341,7 @@
       color: #555;
       margin-bottom: 20px;
       position: relative;
-      padding-left: 30px;
-    }
-
-    .depoimento-card .quote::before {
-      content: '“';
-      font-size: 3em;
-      position: absolute;
-      left: -5px;
-      top: -15px;
-      color: var(--primary-light);
-      opacity: 0.5;
+      padding-left: 20px;
     }
 
     .depoimento-card .author {
@@ -357,25 +357,19 @@
       object-fit: cover;
     }
 
-    .depoimento-card .author-info strong {
-      display: block;
-      font-weight: 700;
-    }
-
-    .depoimento-card .author-info span {
-      font-size: 0.9em;
-      color: #777;
-    }
-
-    /* ESTILOS ESPECÍFICOS DO FORMULÁRIO DE ARTISTA */
+    /* =================== FORMULÁRIO =================== */
     .form-wrapper {
       max-width: 700px;
-      margin: 40px auto;
-      padding: 35px;
+      margin: 20px auto;
+      padding: 25px;
       background-color: var(--card-bg);
       border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
       border: 1px solid var(--border-color);
+    }
+    
+    @media (min-width: 768px) {
+        .form-wrapper { padding: 35px; }
     }
     
     .form-group {
@@ -398,8 +392,7 @@
       border-radius: var(--border-radius);
       font-family: var(--font-family);
       font-size: 1em;
-      transition: border-color var(--transition-speed),
-        box-shadow var(--transition-speed);
+      transition: border-color var(--transition-speed);
     }
 
     .form-group input:focus,
@@ -407,36 +400,33 @@
     .form-group select:focus {
       outline: none;
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 4px rgba(8, 42, 157, 0.2);
+      box-shadow: 0 0 0 4px rgba(8, 42, 157, 0.1);
     }
 
     .address-group {
       display: flex;
+      flex-direction: column;
       gap: 15px;
     }
-
-    .address-group > div {
-      flex: 1;
-    }
-
-    .address-group .number-input {
-      flex: 0.3; /* Menor espaço para o número */
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 150px;
+    
+    @media (min-width: 600px) {
+        .address-group {
+            flex-direction: row;
+        }
+        .address-group .street-input {
+            flex: 2;
+        }
+        .address-group .number-input {
+            flex: 1;
+        }
     }
 
     .submit-btn {
       width: 100%;
-      border: none;
-      cursor: pointer;
       margin-top: 15px;
     }
-    /* FIM DOS ESTILOS ESPECÍFICOS DO FORMULÁRIO DE ARTISTA */
 
-
+    /* =================== FOOTER =================== */
     footer {
       background-color: var(--bg-dark);
       color: #ccc;
@@ -451,24 +441,14 @@
     }
 
     .footer-content h3 {
-      font-size: 2em;
+      font-size: 1.8em;
       color: var(--light-text-color);
       margin-bottom: 15px;
-    }
-
-    .footer-content p {
-      line-height: 1.8;
-      margin-bottom: 20px;
     }
 
     .footer-content a {
       color: var(--secondary-color);
       text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-content a:hover {
-      text-decoration: underline;
     }
 
     .copyright {
@@ -479,75 +459,45 @@
       padding-top: 30px;
     }
 
+    /* =================== MEDIA QUERIES (MOBILE) =================== */
     @media (max-width: 992px) {
+      .hamburger-menu {
+        display: flex;
+      }
+
       nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
+        position: fixed;
+        top: 70px; /* Ajuste conforme altura do header */
+        left: -100%; /* Esconde o menu fora da tela */
         width: 100%;
-        background-color: var(--light-text-color);
-        box-shadow: var(--box-shadow);
+        background-color: var(--card-bg);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        transition: 0.3s ease-in-out;
+        padding-bottom: 20px;
       }
+
       nav.active {
-        display: block;
+        left: 0; /* Traz o menu para a tela */
       }
+
       nav ul {
         flex-direction: column;
         gap: 0;
       }
+
       nav ul li {
+        width: 100%;
         text-align: center;
         border-bottom: 1px solid var(--border-color);
       }
-      nav ul li:last-child {
-        border-bottom: none;
-      }
+
       nav ul li a {
         display: block;
         padding: 15px 0;
-        width: 100%;
       }
-      nav ul li a:hover,
-      nav ul li a.active {
+      
+      nav ul li a:hover {
         background-color: var(--bg-neutral);
-      }
-      .hamburger-menu {
-        display: flex;
-      }
-      .content-box {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .address-group {
-        flex-direction: column;
-        gap: 0;
-      }
-
-      .address-group .number-input {
-        flex: 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .logo {
-        font-size: 1.7em;
-      }
-      .hero h1 {
-        font-size: 2.8em;
-      }
-      .hero p {
-        font-size: 1.2em;
-      }
-      h2 {
-        font-size: 2.2em;
-      }
-      section {
-        padding: 60px 0;
-      }
-      .depoimentos-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -565,6 +515,7 @@
         <ul>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#vantagens">O Que Fazemos</a></li>
+          <li><a href="https://iadesignerweb.github.io/agentecultural-PMC" target="_blank">Agente Municipal</a></li>
           <li><a href="#para-quem-e">Para Quem É</a></li>
           <li><a href="#depoimentos">Depoimentos</a></li>
           <li><a href="#contato" class="btn btn-nav">Fale Conosco</a></li>
@@ -583,10 +534,11 @@
     <section id="sobre">
       <div class="container content-box">
         <div class="image-content">
-          </div>
+          <img src="https://images.unsplash.com/photo-1598425237654-4675629c17df?q=80&w=1000&auto=format&fit=crop" alt="Cultura de Custódia" />
+        </div>
         <div class="text-content">
           <h2>Sobre a Custódia Cultural</h2>
-          <p>A Custódia Cultural é o canal oficial do Departamento de Cultura da Prefeitura Municipal de Custódia (PE), conectado com a nossa comunidade artística e patrimonial. Por meio do Instagram @custodiacultural, compartilhamos eventos, memórias, patrimônios e ações culturais que valorizam nossa identidade local.</p>
+          <p>A Custódia Cultural é o canal oficial do Departamento de Cultura da Prefeitura Municipal de Custódia (PE), conectado com a nossa comunidade artística e patrimonial.</p>
           <p>Nosso objetivo é promover a cultura de Custódia, apoiar artistas locais e preservar nosso patrimônio histórico e imaterial.</p>
           <a href="#contato" class="btn">Saiba Mais</a>
         </div>
@@ -641,7 +593,7 @@
     <section class="social-proof">
       <div class="container">
         <h2>Siga nosso Instagram</h2>
-        <p style="font-size: 1.2em;">Acompanhe no <a href="https://www.instagram.com/custodiacultural" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">@custodiacultural</a> para ficar por dentro de tudo!</p>
+        <p style="font-size: 1.2em; margin-top: 15px;">Acompanhe no <a href="https://www.instagram.com/custodiacultural" target="_blank" style="color: var(--secondary-color); text-decoration: underline; background-color: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px;">@custodiacultural</a> para ficar por dentro de tudo!</p>
       </div>
     </section>
 
@@ -652,7 +604,7 @@
           <div class="depoimento-card">
             <p class="quote">“A Custódia Cultural resgata nossa história e traz mais visibilidade para os artistas da nossa cidade.”</p>
             <div class="author">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=400" alt="Pessoa falando">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Maria">
               <div class="author-info">
                 <strong>Maria</strong>
                 <span>Artista Local</span>
@@ -662,10 +614,10 @@
           <div class="depoimento-card">
             <p class="quote">“É lindo ver a cultura de Custódia sendo valorizada e documentada de forma tão cuidadosa.”</p>
             <div class="author">
-              <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=400" alt="Pessoa falando">
+              <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Joana">
               <div class="author-info">
                 <strong>Joana</strong>
-                <span>Morador</span>
+                <span>Moradora</span>
               </div>
             </div>
           </div>
@@ -676,7 +628,7 @@
     <section id="contato" style="background-color: var(--bg-neutral);">
       <div class="container">
         <h2>Cadastre seu Talento! 🎨</h2>
-        <p style="text-align: center; max-width: 700px; margin: -40px auto 40px;">Faça parte do mapa cultural de Custódia! Preencha o formulário abaixo para o Departamento de Cultura da PMC.</p>
+        <p style="text-align: center; max-width: 700px; margin: -30px auto 40px;">Faça parte do mapa cultural de Custódia! Preencha o formulário abaixo.</p>
 
         <div class="form-wrapper">
           <form id="artist-form">
@@ -686,16 +638,16 @@
             </div>
 
             <div class="form-group">
-              <label for="area-artistica">Qual a área artística você considera pertencer?</label>
+              <label for="area-artistica">Qual a área artística?</label>
               <select id="area-artistica" name="Área Artística" required>
                 <option value="" disabled selected>Selecione a área principal</option>
                 <option value="Musica">Música (Cantor, Instrumentista, Banda)</option>
                 <option value="Danca">Dança (Ballet, Frevo, Street Dance)</option>
                 <option value="Teatro">Teatro/Performance</option>
-                <option value="Artes_Visuais">Artes Visuais (Pintura, Escultura, Fotografia)</option>
+                <option value="Artes_Visuais">Artes Visuais (Pintura, Escultura)</option>
                 <option value="Artesanato">Artesanato</option>
-                <option value="Literatura">Literatura (Poesia, Contação de Histórias)</option>
-                <option value="Cultura_Popular">Cultura Popular/Tradições (Bumba-Meu-Boi, Reisado)</option>
+                <option value="Literatura">Literatura</option>
+                <option value="Cultura_Popular">Cultura Popular (Bumba-Meu-Boi, etc)</option>
                 <option value="Outros">Outros</option>
               </select>
             </div>
@@ -707,11 +659,11 @@
 
             <div class="form-group">
               <label for="celular">Celular:</label>
-              <input type="tel" id="celular" name="Celular" required placeholder="(87) 99999-9999" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" title="Formato: (XX) 9XXXX-XXXX" />
+              <input type="tel" id="celular" name="Celular" required placeholder="(87) 99999-9999" />
             </div>
 
             <div class="address-group">
-              <div class="form-group">
+              <div class="form-group street-input">
                 <label for="endereco">Endereço (Rua/Avenida):</label>
                 <input type="text" id="endereco" name="Endereço" required placeholder="Ex: Rua da Cultura" />
               </div>
@@ -727,7 +679,7 @@
             </div>
 
             <div class="form-group">
-              <label for="historico">Histórico Artístico (Experiências, projetos, apresentações, etc.):</label>
+              <label for="historico">Histórico Artístico:</label>
               <textarea id="historico" name="Histórico Artístico" rows="5" required placeholder="Fale um pouco sobre sua trajetória, projetos e experiências na área."></textarea>
             </div>
 
@@ -741,10 +693,10 @@
   <footer>
     <div class="container footer-content">
       <h3>Quem Somos</h3>
-      <p>O <strong>Departamento de Cultura de Custódia – PE</strong> é responsável por promover a arte, a memória e a identidade cultural da nossa cidade. Estamos sempre abertos para ouvir artistas, moradores e instituições interessadas em construir juntos uma Custódia mais rica culturalmente.</p>
+      <p>O <strong>Departamento de Cultura de Custódia – PE</strong> é responsável por promover a arte, a memória e a identidade cultural da nossa cidade.</p>
       <p>Siga nosso perfil no Instagram: <a href="https://www.instagram.com/custodiacultural" target="_blank">@custodiacultural</a></p>
       <div class="copyright">
-        Copyright © 2025 – Departamento de Cultura Custódia | Todos os direitos reservados
+        Copyright © 2025 – Departamento de Cultura Custódia
       </div>
     </div>
   </footer>
@@ -769,14 +721,12 @@
 
       // Funcionalidade do Formulário de Artista (Cadastro)
       const artistForm = document.getElementById('artist-form');
-      // E-MAIL DE DESTINO CORRIGIDO
       const DESTINATION_EMAIL = 'custodiadeptcultura@gmail.com'; 
 
       if (artistForm) {
         artistForm.addEventListener('submit', function(event) {
-          event.preventDefault(); // Impede o envio padrão do formulário
+          event.preventDefault(); 
 
-          // 1. Coleta dos dados
           const nomeArtistico = document.getElementById('nome-artistico').value;
           const email = document.getElementById('email').value;
           const celular = document.getElementById('celular').value;
@@ -786,11 +736,9 @@
           const historico = document.getElementById('historico').value;
           const areaArtisticaText = document.getElementById('area-artistica').options[document.getElementById('area-artistica').selectedIndex].text;
 
-          // Usamos "%0A" para quebrar linhas no corpo do e-mail.
           const newLine = "%0A";
           const separator = "----------------------------------";
 
-          // 2. Monta o corpo do email com quebras de linha formatadas
           const bodyText = 
             `INFORMAÇÕES DO ARTISTA/GRUPO${newLine}` +
             `${separator}${newLine}` +
@@ -804,28 +752,18 @@
             `${separator}${newLine}` +
             `ENVIADO AUTOMATICAMENTE VIA SITE CUSTÓDIA CULTURAL`;
 
-          // 3. Codifica (URL-encode) o assunto e o corpo para funcionar no link mailto:
           const subject = encodeURIComponent(`CADASTRO ARTISTA (SITE): ${nomeArtistico}`);
           const body = encodeURIComponent(bodyText);
 
-          // 4. Cria o link 'mailto'
           const mailtoLink = `mailto:${DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
 
-          // 5. Abre o cliente de email do usuário
           window.location.href = mailtoLink;
 
-          // 6. Exibe o popup de sucesso com a mensagem correta
           setTimeout(() => {
               alert(`🎉 Seu cadastro foi realizado com sucesso. Lembre-se: você precisa confirmar o envio na janela do seu programa de e-mail (para: ${DESTINATION_EMAIL}).\n\nEm breve retornamos! Secretaria de Educação - Departamento de Cultura - PMC`);
-              artistForm.reset(); // Limpa o formulário
+              artistForm.reset(); 
           }, 500); 
         });
-      }
-
-      // Remove a funcionalidade do formulário de contato antigo (ID contact-form) se ele ainda existir
-      const oldContactForm = document.getElementById('contact-form');
-      if (oldContactForm) {
-        oldContactForm.removeEventListener('submit', (e) => {});
       }
     });
   </script>
